@@ -38,7 +38,6 @@ public class ImgBrowsePagerAdapter extends PagerAdapter {
         context.getWindowManager().getDefaultDisplay().getMetrics(dm);
 
         width = dm.widthPixels;
-
     }
 
     @Override
