@@ -3,6 +3,6 @@
 
 效果图：
 
-![image](https://github.com/zuiwuyuan/ImgDots/blob/master/imgs/imgdots.png)
+![image](https://github.com/zuiwuyuan/ImgDots/blob/master/imgs/imgdots.gif)
 
 如果对你有兴趣，请star下吧，谢谢。
