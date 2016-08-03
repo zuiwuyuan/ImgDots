@@ -1,4 +1,4 @@
-package com.lnyp.imgdots;
+package com.lnyp.imgdots.adapter;
 
 import android.app.Activity;
 import android.support.v4.view.PagerAdapter;
@@ -8,6 +8,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+
+import com.lnyp.imgdots.R;
+import com.lnyp.imgdots.bean.ImgSimple;
+import com.lnyp.imgdots.bean.PointSimple;
+import com.lnyp.imgdots.view.ImageLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +32,7 @@ public class ImgBrowsePagerAdapter extends PagerAdapter {
         this.mContext = context;
         this.imgSimples = imgSimples;
 
-        this.views = new ArrayList<View>();
+        this.views = new ArrayList<>();
 
         DisplayMetrics dm = new DisplayMetrics();
         context.getWindowManager().getDefaultDisplay().getMetrics(dm);
@@ -57,15 +62,18 @@ public class ImgBrowsePagerAdapter extends PagerAdapter {
 
         LinearLayout view = (LinearLayout) LayoutInflater.from(mContext).inflate(R.layout.layout_img_browse, null);
         ImageLayout layoutContent = (ImageLayout) view.findViewById(R.id.layoutContent);
+
         try {
 
             String imgUrl = imgSimples.get(position).url;
             float scale = imgSimples.get(position).scale;
             ArrayList<PointSimple> pointSimples = imgSimples.get(position).pointSimples;
 
-            layoutContent.setImgBg(width, imgUrl, scale);
             layoutContent.setPoints(pointSimples);
 
+            int height = (int) (width * scale);
+
+            layoutContent.setImgBg(width, height, imgUrl);
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -1,9 +1,14 @@
-package com.lnyp.imgdots;
+package com.lnyp.imgdots.activity;
 
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+
+import com.lnyp.imgdots.R;
+import com.lnyp.imgdots.adapter.ImgBrowsePagerAdapter;
+import com.lnyp.imgdots.bean.ImgSimple;
+import com.lnyp.imgdots.bean.PointSimple;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +34,6 @@ public class ImageBrowseActivity extends AppCompatActivity {
         PagerAdapter adapter = new ImgBrowsePagerAdapter(this, imgSimples);
         viewPagerImgs.setAdapter(adapter);
 
-//        viewPagerImgs.setCurrentItem(position);
     }
 
     private void initData() {

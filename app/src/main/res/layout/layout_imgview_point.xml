@@ -7,13 +7,15 @@
         android:id="@+id/imgBg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:adjustViewBounds="true"
         android:maxHeight="1000dp"
-        android:scaleType="centerCrop"/>
+        android:scaleType="centerCrop" />
 
     <FrameLayout
         android:id="@+id/layouPoints"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
 
 </FrameLayout>

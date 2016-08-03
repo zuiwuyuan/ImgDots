@@ -1,4 +1,4 @@
-package com.lnyp.imgdots;
+package com.lnyp.imgdots.bean;
 
 import java.util.ArrayList;
 

@@ -1,15 +1,19 @@
-package com.lnyp.imgdots;
+package com.lnyp.imgdots.view;
 
 import android.content.Context;
+import android.graphics.drawable.AnimationDrawable;
 import android.util.AttributeSet;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.apkfuns.logutils.LogUtils;
 import com.bumptech.glide.Glide;
+import com.lnyp.imgdots.R;
+import com.lnyp.imgdots.bean.PointSimple;
 
 import java.util.ArrayList;
 
@@ -20,6 +24,8 @@ public class ImageLayout extends FrameLayout implements View.OnClickListener {
     FrameLayout layouPoints;
 
     ImageView imgBg;
+
+    Context mContext;
 
     public ImageLayout(Context context) {
         this(context, null);
@@ -38,6 +44,8 @@ public class ImageLayout extends FrameLayout implements View.OnClickListener {
 
     private void initView(Context context, AttributeSet attrs) {
 
+        mContext = context;
+
         View imgPointLayout = inflate(context, R.layout.layout_imgview_point, this);
 
         imgBg = (ImageView) imgPointLayout.findViewById(R.id.imgBg);
@@ -51,30 +59,26 @@ public class ImageLayout extends FrameLayout implements View.OnClickListener {
 
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-
         super.onSizeChanged(w, h, oldw, oldh);
-
-        LogUtils.e("w : " + w);
-        LogUtils.e("h : " + h);
-
-        addPoints(w, h);
-
     }
 
-    /**
-     * @param width  屏幕宽度
-     * @param imgUrl 图片地址
-     * @param scale  图片的宽高比
-     */
-    public void setImgBg(int width, String imgUrl, float scale) {
+    public void setImgBg(int width, int height, String imgUrl) {
 
         ViewGroup.LayoutParams lp = imgBg.getLayoutParams();
         lp.width = width;
-        lp.height = (int) (width * scale);
+        lp.height = height;
 
         imgBg.setLayoutParams(lp);
 
-        Glide.with(getContext()).load(imgUrl).into(imgBg);
+        ViewGroup.LayoutParams lp1 = layouPoints.getLayoutParams();
+        lp1.width = width;
+        lp1.height = height;
+
+        layouPoints.setLayoutParams(lp1);
+
+        Glide.with(mContext).load(imgUrl).asBitmap().into(imgBg);
+
+        addPoints(width, height);
 
     }
 
@@ -85,24 +89,29 @@ public class ImageLayout extends FrameLayout implements View.OnClickListener {
 
     private void addPoints(int width, int height) {
 
-        LogUtils.e("size : " + points.size());
+        layouPoints.removeAllViews();
 
         for (int i = 0; i < points.size(); i++) {
 
-            float width_scale = points.get(i).width_scale;
-            float height_scale = points.get(i).height_scale;
+            double width_scale = points.get(i).width_scale;
+            double height_scale = points.get(i).height_scale;
 
-            ImageView imageView = new ImageView(getContext());
+
+            LinearLayout view = (LinearLayout) LayoutInflater.from(mContext).inflate(R.layout.layout_img_point, this, false);
+            ImageView imageView = (ImageView) view.findViewById(R.id.imgPoint);
             imageView.setTag(i);
-            imageView.setBackgroundResource(R.mipmap.point_img);
 
-            LayoutParams layoutParams = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            AnimationDrawable animationDrawable = (AnimationDrawable) imageView.getDrawable();
+            animationDrawable.start();
+
+            LayoutParams layoutParams = (LayoutParams) view.getLayoutParams();
+
             layoutParams.leftMargin = (int) (width * width_scale);
             layoutParams.topMargin = (int) (height * height_scale);
 
             imageView.setOnClickListener(this);
 
-            layouPoints.addView(imageView, layoutParams);
+            layouPoints.addView(view, layoutParams);
         }
     }
 

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="false">
+    <item
+        android:drawable="@mipmap/point_img1"
+        android:duration="100" />
+    <item
+        android:drawable="@mipmap/point_img2"
+        android:duration="100" />
+    <item
+        android:drawable="@mipmap/point_img3"
+        android:duration="100" />
+    <item
+        android:drawable="@mipmap/point_img4"
+        android:duration="100" />
+    <item
+        android:drawable="@mipmap/point_img5"
+        android:duration="100" />
+    <item
+        android:drawable="@mipmap/point_img6"
+        android:duration="100" />
+    <item
+        android:drawable="@mipmap/point_img7"
+        android:duration="100" />
+    <item
+        android:drawable="@mipmap/point_img8"
+        android:duration="100" />
+    <item
+        android:drawable="@mipmap/point_img9"
+        android:duration="100" />
+    <item
+        android:drawable="@mipmap/point_img10"
+        android:duration="100" />
+    <item
+        android:drawable="@mipmap/point_img11"
+        android:duration="100" />
+    <item
+        android:drawable="@mipmap/point_img12"
+        android:duration="100" />
+    <item
+        android:drawable="@mipmap/point_img13"
+        android:duration="100" />
+</animation-list>
