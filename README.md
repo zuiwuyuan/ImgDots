@@ -5,4 +5,7 @@
 
 ![image](https://github.com/zuiwuyuan/ImgDots/blob/master/imgs/imgdots.gif)
 
-如果对你有兴趣，请star下吧，谢谢。
+详细介绍：
+http://blog.csdn.net/zuiwuyuan/article/details/52105176
+
+如果对你有所启发，请star下吧，谢谢。
